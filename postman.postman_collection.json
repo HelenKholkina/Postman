@@ -77,6 +77,16 @@
 							"    pm.response.to.have.body('{\"person\":{\"u_age\":27,\"u_name\":[null,3500,27],\"u_salary_1_5_year\":14000},\"qa_salary_after_12_months\":10150.0,\"qa_salary_after_6_months\":7000,\"start_qa_salary\":3500}\\n')\r",
 							"});\r",
 							"\r",
+							"pm.test(\"json structure in the response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.person.u_age).to.eql(27);\r",
+							"    pm.expect(jsonData.person.u_name).to.eql([null, 3500, 27]);\r",
+							"    pm.expect(jsonData.person.u_salary_1_5_year).to.eql(14000);\r",
+							"    pm.expect(jsonData.qa_salary_after_12_months).to.eql(10150.0);\r",
+							"    pm.expect(jsonData.qa_salary_after_6_months).to.eql(7000);\r",
+							"    pm.expect(jsonData.start_qa_salary).to.eql(3500);\r",
+							"});\r",
+							"\r",
 							"pm.test(\"*2.9\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.qa_salary_after_12_months).to.eql(jsonData.start_qa_salary*2.9);\r",
@@ -117,56 +127,6 @@
 						"user_info"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "user_info 2.0 for another test to check the structure",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"\r",
-							"//Checking the json structure in the response\r",
-							"pm.test(\"json structure in the response\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.person.u_age).to.eql(27);\r",
-							"    pm.expect(jsonData.person.u_name).to.eql([null, 3500, 27]);\r",
-							"    pm.expect(jsonData.person.u_salary_1_5_year).to.eql(14000);\r",
-							"    pm.expect(jsonData.qa_salary_after_12_months).to.eql(10150.0);\r",
-							"    pm.expect(jsonData.qa_salary_after_6_months).to.eql(7000);\r",
-							"    pm.expect(jsonData.start_qa_salary).to.eql(3500);\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{   \"auth_token\": \"{{token}}\",\r\n    \"age\": 27,\r\n    \"salary\": 3500,\r\n    \"name\": \"HelenKholkina\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/user_info",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"user_info"
-					]
-				},
-				"description": "The second version of tests for different request"
 			},
 			"response": []
 		}
