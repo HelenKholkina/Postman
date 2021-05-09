@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0dc9207b-0b0d-4904-a9dc-bde545a82918",
+		"_postman_id": "11481745-e967-45f9-8247-7e9f92cf32dc",
 		"name": "Task5",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,8 +14,10 @@
 						"exec": [
 							"\r",
 							"    var jsonData = pm.response.json();\r",
-							"    var randomElement = _.sample(jsonData);\r",
-							"    postman.setEnvironmentVariable (\"curr_code\", randomElement.Cur_ID);"
+							"\tvar randomElement = _.sample(jsonData);\r",
+							"\tpostman.setEnvironmentVariable (\"curr_code\", randomElement.Cur_ID);\r",
+							"    console.log(randomElement.Cur_ID);\r",
+							""
 						],
 						"type": "text/javascript"
 					}
